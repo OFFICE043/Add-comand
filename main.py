@@ -27,15 +27,15 @@ load_dotenv()
 keep_alive()
 
 API_TOKEN = os.getenv("API_TOKEN")
-CHANNELS = ["@AniVerseClip", "@AniVerseUzDub"]
-MAIN_CHANNELS = ["@anilord_ongoing", "@hoshino_dubbing", "@AniVerseClip"]
+CHANNELS = []
+MAIN_CHANNELS = []
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 
 bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
-ADMINS = {6486825926}
+ADMINS = {7483732504}
 
 class AdminStates(StatesGroup):
     waiting_for_kino_data = State()
