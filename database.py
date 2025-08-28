@@ -13,7 +13,6 @@ DB_PORT = os.getenv("DB_PORT")
 
 DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-# ------------------ Команданы қосу ------------------
 async def add_command(panel: str, sub_panel: str, command_name: str, description: str):
     conn = await asyncpg.connect(DATABASE_URL)
     try:
@@ -27,7 +26,12 @@ async def add_command(panel: str, sub_panel: str, command_name: str, description
     finally:
         await conn.close()
 
-# ------------------ Командаларды алу ------------------
+def get_panels(panel_type: str):
+    if panel_type == "User Panel":
+        return ["Anime Izlash", "Testlik", "Hamkorlik"]
+    else:
+        return ["Sozlamalar", "Postlar", "Statistika"]
+
 def get_commands(panel: str):
     async def _get():
         conn = await asyncpg.connect(DATABASE_URL)
@@ -40,14 +44,7 @@ def get_commands(panel: str):
             await conn.close()
     return asyncio.run(_get())
 
-# ------------------ Панельдер тізімі ------------------
-def get_panels(panel_type: str):
-    if panel_type == "User Panel":
-        return ["Anime Izlash", "Testlik", "Hamkorlik"]
-    else:
-        return ["Sozlamalar", "Postlar", "Statistika"]
-
-# ------------------ База кестесін жасау ------------------
+# ------------------ Baza keltir ------------------
 async def create_tables():
     conn = await asyncpg.connect(DATABASE_URL)
     try:
@@ -66,5 +63,4 @@ async def create_tables():
     finally:
         await conn.close()
 
-# ------------------ Таблицаны тексеріп жасау ------------------
 asyncio.run(create_tables())
