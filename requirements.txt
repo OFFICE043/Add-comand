@@ -1,4 +1,4 @@
-hereaiogram==3.0.0
+aiogram==2.25.1
 asyncpg==1.36.0
 flask==2.3.3
 python-dotenv==1.0.1
