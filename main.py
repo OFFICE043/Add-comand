@@ -27,8 +27,8 @@ load_dotenv()
 keep_alive()
 
 API_TOKEN = os.getenv("API_TOKEN")
-CHANNELS = []
-MAIN_CHANNELS = []
+CHANNELS = ["@anilordtv"]
+MAIN_CHANNELS = ["@anilordtv"]
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 
 bot = Bot(token=API_TOKEN)
